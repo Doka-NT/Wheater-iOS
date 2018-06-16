@@ -18,6 +18,9 @@ class LoginViewController: UIViewController {
         
         let hideKeyboardGesture = UITapGestureRecognizer(target: self, action: #selector(self.hideKeyboard))
         scrollView?.addGestureRecognizer(hideKeyboardGesture)
+        
+        userNameField.delegate = self
+        passwordField.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,7 +51,7 @@ class LoginViewController: UIViewController {
         scrollView?.endEditing(true)
     }
     
-    @IBAction func buttonClick(_ sender: UIButton) {
+    fileprivate func doAuth() {
         var text:String = "Войти не получилось =("
         if userNameField?.text == "admin" && passwordField?.text == "12345" {
             text = "Добро пожаловать, admin!"
@@ -66,11 +69,30 @@ class LoginViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
+    @IBAction func buttonClick(_ sender: UIButton) {
+        doAuth()
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+}
+
+extension LoginViewController:UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        if (textField == userNameField) {
+            passwordField.becomeFirstResponder()
+        }
+        
+        if (textField == passwordField) {
+            doAuth()
+        }
+        
+        return true
     }
 }
