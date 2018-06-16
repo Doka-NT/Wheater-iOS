@@ -8,10 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		AC567F4620D2744D00289E44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC567F4520D2744D00289E44 /* AppDelegate.swift */; };
-		AC567F4820D2744D00289E44 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC567F4720D2744D00289E44 /* ViewController.swift */; };
+		AC567F4820D2744D00289E44 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC567F4720D2744D00289E44 /* LoginViewController.swift */; };
 		AC567F4B20D2744D00289E44 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC567F4920D2744D00289E44 /* Main.storyboard */; };
 		AC567F4D20D2744F00289E44 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC567F4C20D2744F00289E44 /* Assets.xcassets */; };
-		AC567F5020D2744F00289E44 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC567F4E20D2744F00289E44 /* LaunchScreen.storyboard */; };
 		AC567F5B20D2744F00289E44 /* WheaterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC567F5A20D2744F00289E44 /* WheaterTests.swift */; };
 		AC567F6620D2744F00289E44 /* WheaterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC567F6520D2744F00289E44 /* WheaterUITests.swift */; };
 /* End PBXBuildFile section */
@@ -36,10 +35,9 @@
 /* Begin PBXFileReference section */
 		AC567F4220D2744D00289E44 /* Wheater.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wheater.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC567F4520D2744D00289E44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AC567F4720D2744D00289E44 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AC567F4720D2744D00289E44 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		AC567F4A20D2744D00289E44 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AC567F4C20D2744F00289E44 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		AC567F4F20D2744F00289E44 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC567F5120D2744F00289E44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC567F5620D2744F00289E44 /* WheaterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WheaterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC567F5A20D2744F00289E44 /* WheaterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheaterTests.swift; sourceTree = "<group>"; };
@@ -97,11 +95,11 @@
 		AC567F4420D2744D00289E44 /* Wheater */ = {
 			isa = PBXGroup;
 			children = (
-				AC567F4520D2744D00289E44 /* AppDelegate.swift */,
-				AC567F4720D2744D00289E44 /* ViewController.swift */,
-				AC567F4920D2744D00289E44 /* Main.storyboard */,
+				AC567F7620D3CE7C00289E44 /* App */,
+				AC567F7520D3CDA900289E44 /* Models */,
+				AC567F7420D3CD9F00289E44 /* Views */,
+				AC567F7320D3CD9100289E44 /* Controllers */,
 				AC567F4C20D2744F00289E44 /* Assets.xcassets */,
-				AC567F4E20D2744F00289E44 /* LaunchScreen.storyboard */,
 				AC567F5120D2744F00289E44 /* Info.plist */,
 			);
 			path = Wheater;
@@ -123,6 +121,37 @@
 				AC567F6720D2744F00289E44 /* Info.plist */,
 			);
 			path = WheaterUITests;
+			sourceTree = "<group>";
+		};
+		AC567F7320D3CD9100289E44 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				AC567F4720D2744D00289E44 /* LoginViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		AC567F7420D3CD9F00289E44 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AC567F4920D2744D00289E44 /* Main.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		AC567F7520D3CDA900289E44 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		AC567F7620D3CE7C00289E44 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				AC567F4520D2744D00289E44 /* AppDelegate.swift */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -229,7 +258,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC567F5020D2744F00289E44 /* LaunchScreen.storyboard in Resources */,
 				AC567F4D20D2744F00289E44 /* Assets.xcassets in Resources */,
 				AC567F4B20D2744D00289E44 /* Main.storyboard in Resources */,
 			);
@@ -256,7 +284,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC567F4820D2744D00289E44 /* ViewController.swift in Sources */,
+				AC567F4820D2744D00289E44 /* LoginViewController.swift in Sources */,
 				AC567F4620D2744D00289E44 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -299,14 +327,6 @@
 				AC567F4A20D2744D00289E44 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		AC567F4E20D2744F00289E44 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AC567F4F20D2744F00289E44 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
