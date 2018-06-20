@@ -51,26 +51,29 @@ class LoginViewController: UIViewController {
         scrollView?.endEditing(true)
     }
     
-    fileprivate func doAuth() {
-        var text:String = "Войти не получилось =("
-        if userNameField?.text == "admin" && passwordField?.text == "12345" {
-            text = "Добро пожаловать, admin!"
+    fileprivate func checkCredentials() -> Bool {
+        if userNameField?.text != "admin" || passwordField?.text != "12345" {
+            let text:String = "Войти не получилось =("
+            
+            let alertController = UIAlertController(
+                title: "Авторизация",
+                message: text,
+                preferredStyle: UIAlertControllerStyle.alert)
+            
+            alertController.addAction(
+                UIAlertAction(title: "Ok", style: UIAlertActionStyle.default,handler: nil)
+            )
+            
+            self.present(alertController, animated: true, completion: nil)
+            
+            return false
         }
         
-        let alertController = UIAlertController(
-            title: "Авторизация",
-            message: text,
-            preferredStyle: UIAlertControllerStyle.alert)
-        
-        alertController.addAction(
-            UIAlertAction(title: "Ok", style: UIAlertActionStyle.default,handler: nil)
-        )
-        
-        self.present(alertController, animated: true, completion: nil)
+        return true
     }
     
     @IBAction func buttonClick(_ sender: UIButton) {
-        doAuth()
+        _ = checkCredentials()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -79,6 +82,14 @@ class LoginViewController: UIViewController {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        return checkCredentials()
+    }
+    
+    @IBAction func unwindFromTabBar(_ segue: UIStoryboardSegue) {
+        // do nothing
     }
 }
 
@@ -90,7 +101,7 @@ extension LoginViewController:UITextFieldDelegate {
         }
         
         if (textField == passwordField) {
-            doAuth()
+            _ = checkCredentials()
         }
         
         return true
