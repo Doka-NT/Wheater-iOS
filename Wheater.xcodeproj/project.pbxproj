@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AC3F040A20DAD3740010B31C /* Tab1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3F040920DAD3740010B31C /* Tab1ViewController.swift */; };
 		AC567F4620D2744D00289E44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC567F4520D2744D00289E44 /* AppDelegate.swift */; };
 		AC567F4820D2744D00289E44 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC567F4720D2744D00289E44 /* LoginViewController.swift */; };
 		AC567F4B20D2744D00289E44 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC567F4920D2744D00289E44 /* Main.storyboard */; };
@@ -34,7 +33,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		AC3F040920DAD3740010B31C /* Tab1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tab1ViewController.swift; sourceTree = "<group>"; };
 		AC567F4220D2744D00289E44 /* Wheater.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wheater.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC567F4520D2744D00289E44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC567F4720D2744D00289E44 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -128,7 +126,6 @@
 		AC567F7320D3CD9100289E44 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				AC3F040920DAD3740010B31C /* Tab1ViewController.swift */,
 				AC567F4720D2744D00289E44 /* LoginViewController.swift */,
 			);
 			path = Controllers;
@@ -287,7 +284,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC3F040A20DAD3740010B31C /* Tab1ViewController.swift in Sources */,
 				AC567F4820D2744D00289E44 /* LoginViewController.swift in Sources */,
 				AC567F4620D2744D00289E44 /* AppDelegate.swift in Sources */,
 			);
