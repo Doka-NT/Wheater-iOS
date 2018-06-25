@@ -13,6 +13,16 @@
 		AC567F4D20D2744F00289E44 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC567F4C20D2744F00289E44 /* Assets.xcassets */; };
 		AC567F5B20D2744F00289E44 /* WheaterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC567F5A20D2744F00289E44 /* WheaterTests.swift */; };
 		AC567F6620D2744F00289E44 /* WheaterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC567F6520D2744F00289E44 /* WheaterUITests.swift */; };
+		AC6C520720E1185600BF47B3 /* AllGroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6C520620E1185600BF47B3 /* AllGroupsTableViewController.swift */; };
+		ACA7B11E20E0DCFA00E4A81D /* PhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA7B11D20E0DCFA00E4A81D /* PhotosCollectionViewCell.swift */; };
+		ACA7B12020E0DE4000E4A81D /* PhotosCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA7B11F20E0DE4000E4A81D /* PhotosCollectionViewController.swift */; };
+		ACA7B12220E0DF2F00E4A81D /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA7B12120E0DF2F00E4A81D /* Photo.swift */; };
+		ACA7B12420E0EB9900E4A81D /* GroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA7B12320E0EB9900E4A81D /* GroupsTableViewController.swift */; };
+		ACA7B12620E0EC4800E4A81D /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA7B12520E0EC4800E4A81D /* Group.swift */; };
+		ACA7B12820E10C2F00E4A81D /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA7B12720E10C2F00E4A81D /* GroupTableViewCell.swift */; };
+		ACF649D420E0C671001AC503 /* FriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF649D320E0C671001AC503 /* FriendsTableViewController.swift */; };
+		ACF649D620E0C722001AC503 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF649D520E0C722001AC503 /* Friend.swift */; };
+		ACF649D820E0CC06001AC503 /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF649D720E0CC06001AC503 /* FriendTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +55,16 @@
 		AC567F6120D2744F00289E44 /* WheaterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WheaterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC567F6520D2744F00289E44 /* WheaterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheaterUITests.swift; sourceTree = "<group>"; };
 		AC567F6720D2744F00289E44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC6C520620E1185600BF47B3 /* AllGroupsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllGroupsTableViewController.swift; sourceTree = "<group>"; };
+		ACA7B11D20E0DCFA00E4A81D /* PhotosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewCell.swift; sourceTree = "<group>"; };
+		ACA7B11F20E0DE4000E4A81D /* PhotosCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewController.swift; sourceTree = "<group>"; };
+		ACA7B12120E0DF2F00E4A81D /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		ACA7B12320E0EB9900E4A81D /* GroupsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsTableViewController.swift; sourceTree = "<group>"; };
+		ACA7B12520E0EC4800E4A81D /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		ACA7B12720E10C2F00E4A81D /* GroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTableViewCell.swift; sourceTree = "<group>"; };
+		ACF649D320E0C671001AC503 /* FriendsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewController.swift; sourceTree = "<group>"; };
+		ACF649D520E0C722001AC503 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
+		ACF649D720E0CC06001AC503 /* FriendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +147,10 @@
 			isa = PBXGroup;
 			children = (
 				AC567F4720D2744D00289E44 /* LoginViewController.swift */,
+				ACF649D320E0C671001AC503 /* FriendsTableViewController.swift */,
+				ACA7B11F20E0DE4000E4A81D /* PhotosCollectionViewController.swift */,
+				ACA7B12320E0EB9900E4A81D /* GroupsTableViewController.swift */,
+				AC6C520620E1185600BF47B3 /* AllGroupsTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -135,6 +159,9 @@
 			isa = PBXGroup;
 			children = (
 				AC567F4920D2744D00289E44 /* Main.storyboard */,
+				ACF649D720E0CC06001AC503 /* FriendTableViewCell.swift */,
+				ACA7B11D20E0DCFA00E4A81D /* PhotosCollectionViewCell.swift */,
+				ACA7B12720E10C2F00E4A81D /* GroupTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -142,6 +169,9 @@
 		AC567F7520D3CDA900289E44 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				ACF649D520E0C722001AC503 /* Friend.swift */,
+				ACA7B12120E0DF2F00E4A81D /* Photo.swift */,
+				ACA7B12520E0EC4800E4A81D /* Group.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -284,8 +314,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACA7B12220E0DF2F00E4A81D /* Photo.swift in Sources */,
 				AC567F4820D2744D00289E44 /* LoginViewController.swift in Sources */,
+				ACA7B12420E0EB9900E4A81D /* GroupsTableViewController.swift in Sources */,
+				ACA7B12620E0EC4800E4A81D /* Group.swift in Sources */,
+				ACA7B12820E10C2F00E4A81D /* GroupTableViewCell.swift in Sources */,
+				AC6C520720E1185600BF47B3 /* AllGroupsTableViewController.swift in Sources */,
 				AC567F4620D2744D00289E44 /* AppDelegate.swift in Sources */,
+				ACF649D820E0CC06001AC503 /* FriendTableViewCell.swift in Sources */,
+				ACA7B12020E0DE4000E4A81D /* PhotosCollectionViewController.swift in Sources */,
+				ACF649D420E0C671001AC503 /* FriendsTableViewController.swift in Sources */,
+				ACF649D620E0C722001AC503 /* Friend.swift in Sources */,
+				ACA7B11E20E0DCFA00E4A81D /* PhotosCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
