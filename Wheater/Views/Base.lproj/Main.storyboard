@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bxz-xm-Pzv">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -91,7 +91,7 @@
                                                 <state key="normal" title="Войти"/>
                                                 <connections>
                                                     <action selector="buttonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8LV-2H-QPp"/>
-                                                    <segue destination="oXy-pL-55H" kind="show" id="FMH-zt-8WG"/>
+                                                    <segue destination="oXy-pL-55H" kind="show" identifier="AfterLoginSegue" id="FMH-zt-8WG"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -520,6 +520,41 @@
             </objects>
             <point key="canvasLocation" x="31" y="821"/>
         </scene>
+        <!--Vk Auth View Controller-->
+        <scene sceneID="6E5-eZ-GPh">
+            <objects>
+                <viewController id="bxz-xm-Pzv" customClass="VkAuthViewController" customModule="Wheater" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="r6F-zY-AxU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eKQ-E3-IZm">
+                                <rect key="frame" x="-0.33333333333334281" y="44" width="375" height="734"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ucA-Vq-3e9" firstAttribute="bottom" secondItem="eKQ-E3-IZm" secondAttribute="bottom" id="9dk-f0-tns"/>
+                            <constraint firstItem="eKQ-E3-IZm" firstAttribute="leading" secondItem="ucA-Vq-3e9" secondAttribute="leading" id="VYf-7H-86k"/>
+                            <constraint firstItem="ucA-Vq-3e9" firstAttribute="trailing" secondItem="eKQ-E3-IZm" secondAttribute="trailing" id="hyU-dw-4fo"/>
+                            <constraint firstItem="eKQ-E3-IZm" firstAttribute="top" secondItem="ucA-Vq-3e9" secondAttribute="top" id="ugM-RG-Gna"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ucA-Vq-3e9"/>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="eKQ-E3-IZm" id="AeN-Kg-xrF"/>
+                        <segue destination="oXy-pL-55H" kind="show" identifier="AfterLoginSegue" id="hLc-iI-0fd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8fD-Me-jad" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="30" y="-767"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="Qhc-uI-MUS">
             <objects>
@@ -578,4 +613,7 @@
             <point key="canvasLocation" x="1354" y="-27"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="hLc-iI-0fd"/>
+    </inferredMetricsTieBreakers>
 </document>

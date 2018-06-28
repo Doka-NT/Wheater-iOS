@@ -16,6 +16,11 @@ class GroupsTableViewController: UITableViewController {
         super.viewDidLoad()
         
         groups = Group.getMyGroups()
+        // запрос к API групп
+        try! VKClient.getInstance().getGroups { response in
+            print(response.value!)
+        }
+
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

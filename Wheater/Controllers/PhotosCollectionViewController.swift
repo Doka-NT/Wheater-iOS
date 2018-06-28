@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class PhotosCollectionViewController: UICollectionViewController {
     let cellId = "photoCell"
@@ -17,6 +18,15 @@ class PhotosCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
         
         photos = Photo.getPhotos(for: friend!)
+        
+        // TODO переделать на обычный Dictionary
+        let params: Parameters = [
+            "album_id": "profile"
+        ]
+        // запрос к API фото
+        try! VKClient.getInstance().getPhotos(parameters: params) { response in
+            print(response.value!)
+        }
     }
 
 
