@@ -34,7 +34,7 @@ class VKClient {
     }
     
     func getFriends(handler:@escaping (DataResponse<Any>) -> Void) {
-        callApi(method: "friends.get", parameters: nil, handler: handler)
+        callApi(method: "friends.get", parameters: ["fields": "nickname,photo_200"], handler: handler)
     }
     
     func getPhotos(parameters: Parameters, handler:@escaping (DataResponse<Any>) -> Void) {
@@ -57,7 +57,7 @@ class VKClient {
         }
         
         let url = baseUrl + method
-        
+        print(url, params)
         Alamofire.request(url, method: .get, parameters: params).responseJSON(completionHandler: handler)
     }
     

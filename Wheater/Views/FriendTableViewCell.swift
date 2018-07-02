@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class FriendTableViewCell: UITableViewCell {
     @IBOutlet weak var friendName: UILabel!
@@ -14,6 +15,8 @@ class FriendTableViewCell: UITableViewCell {
     
     func setFriend(_ friend: Friend) {
         friendName.text = friend.name
-        friendImage.image = friend.image
+        if let url = friend.image {
+            friendImage.kf.setImage(with: url)
+        }
     }
 }

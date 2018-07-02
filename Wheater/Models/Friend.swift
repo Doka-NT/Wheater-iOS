@@ -12,12 +12,12 @@ import UIKit
 class Friend {
     var id: Int
     var name: String
-    var image: UIImage
+    var image: URL?
     
     init(id:Int, name:String, imageName: String) {
         self.id = id
         self.name = name
-        self.image = UIImage(named: imageName)!
+        self.image = URL(string: imageName)
     }
 
     static func getFriends() -> [Friend] {
