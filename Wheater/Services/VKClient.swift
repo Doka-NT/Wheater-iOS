@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import SwiftyJSON
 
 class VKClient {
     
@@ -33,16 +34,47 @@ class VKClient {
         try checkToken()
     }
     
-    func getFriends(handler:@escaping (DataResponse<Any>) -> Void) {
-        callApi(method: "friends.get", parameters: ["fields": "nickname,photo_200"], handler: handler)
+    func getFriends(handler:@escaping ([Friend]) -> Void) {
+        callApi(
+            method: "friends.get",
+            parameters: ["fields": "nickname,photo_200"]
+        ) { response in
+            let json = JSON(response.value as Any)
+            let friends = ModelFactory.createFriendList(json)
+            
+            handler(friends)
+        }
     }
     
-    func getPhotos(parameters: Parameters, handler:@escaping (DataResponse<Any>) -> Void) {
-        callApi(method: "photos.get", parameters: parameters, handler: handler)
+    func getPhotos(for friend:Friend, handler:@escaping ([Photo]) -> Void) {
+        callApi(
+            method: "photos.get", parameters: [
+                "owner_id": friend.id,
+                "album_id": "profile"
+        ]) { response in
+            let json = JSON(response.value as Any)
+            let photos = ModelFactory.createPhotosList(json)
+            
+            handler(photos)
+        }
     }
     
-    func getGroups(handler:@escaping (DataResponse<Any>) -> Void) {
-        callApi(method: "groups.get", parameters: nil, handler: handler)
+    func getGroups(handler:@escaping ([Group]) -> Void) {
+        callApi(method: "groups.get", parameters: ["extended": 1]) { response in
+            let json = JSON(response.value as Any)
+            let groups = ModelFactory.createGroupList(json)
+            
+            handler(groups)
+        }
+    }
+    
+    func searchGroups(pattern:String, handler:@escaping ([Group]) -> Void) {
+        callApi(method: "groups.search", parameters: ["q": pattern]) { response in
+            let json = JSON(response.value as Any)
+            let groups = ModelFactory.createGroupList(json)
+            
+            handler(groups)
+        }
     }
     
     private func callApi(method:String, parameters optParams:Parameters?, handler:@escaping (DataResponse<Any>) -> Void) {

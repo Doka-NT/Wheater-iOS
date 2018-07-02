@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import SwiftyJSON
 
 class FriendsTableViewController: UITableViewController {
     let friendCellId = "friendCell"
@@ -19,9 +18,8 @@ class FriendsTableViewController: UITableViewController {
         super.viewDidLoad()
         
         // запрос к API друзей
-        try! VKClient.getInstance().getFriends { response in
-            let json = JSON(response.value as Any)
-            self.friends = ModelFactory.createFriendList(json)
+        try! VKClient.getInstance().getFriends { friends in
+            self.friends = friends
             self.tableView.reloadData()
         }
     }

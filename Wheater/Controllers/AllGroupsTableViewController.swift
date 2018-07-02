@@ -17,7 +17,6 @@ class AllGroupsTableViewController: UITableViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        groups = Group.groups
         searchBar.delegate = self
     }
 
@@ -36,7 +35,9 @@ class AllGroupsTableViewController: UITableViewController, UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        self.groups = Group.groups.filter { group in group.name.starts(with: searchText)}
-        tableView.reloadData()
+        try? VKClient.getInstance().searchGroups(pattern: searchText) { groups in
+            self.groups = groups
+            self.tableView.reloadData()
+        }
     }
 }

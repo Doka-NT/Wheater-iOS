@@ -8,24 +8,24 @@
 
 import UIKit
 import Alamofire
+import Kingfisher
 
 class PhotosCollectionViewController: UICollectionViewController {
     let cellId = "photoCell"
     var friend: Friend?
-    var photos: [String] = []
+    var photos: [Photo] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        photos = Photo.getPhotos(for: friend!)
+        guard friend != nil else {
+            return
+        }
         
-        // TODO переделать на обычный Dictionary
-        let params: Parameters = [
-            "album_id": "profile"
-        ]
         // запрос к API фото
-        try! VKClient.getInstance().getPhotos(parameters: params) { response in
-            print(response.value!)
+        try! VKClient.getInstance().getPhotos(for: friend!) { photos in
+            self.photos = photos
+            self.collectionView?.reloadData()
         }
     }
 
@@ -37,7 +37,9 @@ class PhotosCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! PhotosCollectionViewCell
     
-        cell.photoImage?.image = UIImage(named: photos[indexPath.row])
+        let url = URL(string: photos[indexPath.row].uri)
+        
+        cell.photoImage?.kf.setImage(with: url)
     
         return cell
     }

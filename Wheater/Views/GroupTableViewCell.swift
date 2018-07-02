@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class GroupTableViewCell: UITableViewCell {
     @IBOutlet weak var name:UILabel?
@@ -14,6 +15,7 @@ class GroupTableViewCell: UITableViewCell {
     
     func setGroup(_ group: Group) {
         name?.text = group.name
-        groupImage?.image = UIImage(named: group.imageUri)
+        let url = URL(string: group.imageUri)
+        groupImage?.kf.setImage(with: url)
     }
 }

@@ -14,11 +14,11 @@ class GroupsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        groups = Group.getMyGroups()
+
         // запрос к API групп
-        try! VKClient.getInstance().getGroups { response in
-            print(response.value!)
+        try! VKClient.getInstance().getGroups() { groups in
+            self.groups = groups
+            self.tableView.reloadData()
         }
 
     }
@@ -48,6 +48,7 @@ class GroupsTableViewController: UITableViewController {
         }
         
         if let selectedIndex = allGroupsTV.tableView.indexPathForSelectedRow?.row {
+            // TODO: Добавить страницу просмотра группы и перенести на другой View
             groups.append(allGroupsTV.groups[selectedIndex])
             tableView.reloadData()
         }
