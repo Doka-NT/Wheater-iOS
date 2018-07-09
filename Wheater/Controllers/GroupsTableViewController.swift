@@ -11,13 +11,18 @@ import RealmSwift
 
 class GroupsTableViewController: UITableViewController {
     private var cellId = "groupCell"
-    var groups: [Group] = []
-
+    var groups: Results<Group>!
+    
+    private let repo = CommonRepository<Group>()
+    private var token:NotificationToken?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        loadDataFromRealm()
         loadData()
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return groups.count
     }
@@ -32,7 +37,7 @@ class GroupsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
-            groups.remove(at: indexPath.row)
+            //            groups.remove(at: indexPath.row)
             tableView.reloadData()
         }
     }
@@ -44,27 +49,28 @@ class GroupsTableViewController: UITableViewController {
         
         if let selectedIndex = allGroupsTV.tableView.indexPathForSelectedRow?.row {
             // TODO: Добавить страницу просмотра группы и перенести на другой View
-            groups.append(allGroupsTV.groups[selectedIndex])
+            //            groups.append(allGroupsTV.groups[selectedIndex])
             tableView.reloadData()
         }
     }
     
     private func loadData() {
         // запрос к API групп
-        try! VKClient.getInstance().getGroups() { groups in
-            let realm = try! Realm()
-            try! realm.write {
-                realm.delete(realm.objects(Group.self))
-                realm.add(groups)
-                
-                self.loadDataFromRealm()
-            }
-        }
+        try! VKClient.getInstance().getGroups {self.repo.saveAll($0)}
     }
     
     private func loadDataFromRealm() {
-        let realm = try! Realm()
-        self.groups = realm.objects(Group.self).map { $0 }
-        self.tableView.reloadData()
+        groups = repo.all()
+        
+        token = groups.observe { changes in
+            switch changes {
+            case .initial(_):
+                self.tableView.reloadData()
+            case .update(_):
+                self.tableView.reloadData()
+            case .error(let error):
+                print (error)
+            }
+        }
     }
 }

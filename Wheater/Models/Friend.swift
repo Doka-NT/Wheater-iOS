@@ -19,6 +19,10 @@ class Friend:Object {
         return URL(string: imageName)
     }
     
+    override static func primaryKey() -> String? {
+        return "id"
+    }
+    
     convenience init(id:Int, name:String, imageName: String) {
         self.init()
         self.id = id

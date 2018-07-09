@@ -12,12 +12,15 @@ import RealmSwift
 
 class FriendsTableViewController: UITableViewController {
     let friendCellId = "friendCell"
+    let repo = CommonRepository<Friend>()
     
-    var friends: [Friend] = []
+    var friends: Results<Friend>!
+    var token:NotificationToken?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
+        loadDataFromRealm()
         loadData()
     }
     
@@ -43,20 +46,21 @@ class FriendsTableViewController: UITableViewController {
     
     private func loadData() {
         // запрос к API друзей
-        try! VKClient.getInstance().getFriends { friends in
-            let realm = try! Realm()
-            try! realm.write {
-                realm.delete(realm.objects(Friend.self))
-                realm.add(friends)
-                
-                self.loadDataFromRealm()
-            }
-        }
+        try! VKClient.getInstance().getFriends{ self.repo.saveAll($0) }
     }
     
     private func loadDataFromRealm() {
-        let realm = try! Realm()
-        self.friends = realm.objects(Friend.self).map { $0 }
-        self.tableView.reloadData()
+        friends = repo.all()
+        
+        token = friends.observe { changes in
+            switch changes {
+            case .initial(_):
+                self.tableView.reloadData()
+            case .update(_):
+                self.tableView.reloadData()
+            case .error(let error):
+                print (error)
+            }
+        }
     }
 }

@@ -14,11 +14,15 @@ import RealmSwift
 class PhotosCollectionViewController: UICollectionViewController {
     let cellId = "photoCell"
     var friend: Friend?
-    var photos: [Photo] = []
+    var photos: Results<Photo>!
+    
+    private let repo = CommonRepository<Photo>()
+    private var token:NotificationToken?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        loadDataFromRealm()
         loadData()
     }
 
@@ -38,25 +42,22 @@ class PhotosCollectionViewController: UICollectionViewController {
     }
 
     private func loadData() {
-        guard friend != nil else {
-            return
-        }
-        
         // запрос к API фото
-        try! VKClient.getInstance().getPhotos(for: friend!) { photos in
-            let realm = try! Realm()
-            try! realm.write {
-                realm.delete(realm.objects(Photo.self).filter("friend.id = %@", self.friend!.id))
-                realm.add(photos)
-                
-                self.loadDataFromRealm()
-            }
-        }
+        try! VKClient.getInstance().getPhotos(for: friend!) { self.repo.saveAll($0, for:self.friend!) }
     }
     
     private func loadDataFromRealm() {
-        let realm = try! Realm()
-        self.photos = realm.objects(Photo.self).filter("friend.id = %@", self.friend!.id).map { $0 }
-        self.collectionView?.reloadData()
+        photos = repo.all(for:friend!)
+        
+        token = photos.observe { changes in
+            switch changes {
+            case .initial(_):
+                self.collectionView?.reloadData()
+            case .update(_):
+                self.collectionView?.reloadData()
+            case .error(let error):
+                print (error)
+            }
+        }
     }
 }

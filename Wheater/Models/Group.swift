@@ -14,6 +14,10 @@ class Group:Object {
     @objc dynamic var name:String = ""
     @objc dynamic var imageUri:String = ""
     
+    override static func primaryKey() -> String? {
+        return "id"
+    }
+    
     convenience init(id:Int, name:String, imageUri:String) {
         self.init()
         self.id = id

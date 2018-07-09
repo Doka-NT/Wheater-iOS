@@ -24,6 +24,7 @@
 		ACA7B12420E0EB9900E4A81D /* GroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA7B12320E0EB9900E4A81D /* GroupsTableViewController.swift */; };
 		ACA7B12620E0EC4800E4A81D /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA7B12520E0EC4800E4A81D /* Group.swift */; };
 		ACA7B12820E10C2F00E4A81D /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA7B12720E10C2F00E4A81D /* GroupTableViewCell.swift */; };
+		ACB9B2F120F41631006D3CDF /* CommonRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB9B2F020F41631006D3CDF /* CommonRepository.swift */; };
 		ACDE4B3C20EA658600F3D35B /* ModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDE4B3B20EA658600F3D35B /* ModelFactory.swift */; };
 		ACF649D420E0C671001AC503 /* FriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF649D320E0C671001AC503 /* FriendsTableViewController.swift */; };
 		ACF649D620E0C722001AC503 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF649D520E0C722001AC503 /* Friend.swift */; };
@@ -80,6 +81,7 @@
 		ACA7B12320E0EB9900E4A81D /* GroupsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsTableViewController.swift; sourceTree = "<group>"; };
 		ACA7B12520E0EC4800E4A81D /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		ACA7B12720E10C2F00E4A81D /* GroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTableViewCell.swift; sourceTree = "<group>"; };
+		ACB9B2F020F41631006D3CDF /* CommonRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonRepository.swift; sourceTree = "<group>"; };
 		ACDE4B3B20EA658600F3D35B /* ModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelFactory.swift; sourceTree = "<group>"; };
 		ACF649D320E0C671001AC503 /* FriendsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewController.swift; sourceTree = "<group>"; };
 		ACF649D520E0C722001AC503 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 		AC567F4420D2744D00289E44 /* Wheater */ = {
 			isa = PBXGroup;
 			children = (
+				ACB9B2EF20F41611006D3CDF /* Repositories */,
 				AC5A80A220E513EB00531987 /* Services */,
 				AC567F7620D3CE7C00289E44 /* App */,
 				AC567F7520D3CDA900289E44 /* Models */,
@@ -242,6 +245,14 @@
 				ACDE4B3B20EA658600F3D35B /* ModelFactory.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		ACB9B2EF20F41611006D3CDF /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				ACB9B2F020F41631006D3CDF /* CommonRepository.swift */,
+			);
+			path = Repositories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -473,6 +484,7 @@
 				AC6C520720E1185600BF47B3 /* AllGroupsTableViewController.swift in Sources */,
 				AC5A80A120E512B100531987 /* VkAuthViewController.swift in Sources */,
 				AC567F4620D2744D00289E44 /* AppDelegate.swift in Sources */,
+				ACB9B2F120F41631006D3CDF /* CommonRepository.swift in Sources */,
 				ACF649D820E0CC06001AC503 /* FriendTableViewCell.swift in Sources */,
 				ACA7B12020E0DE4000E4A81D /* PhotosCollectionViewController.swift in Sources */,
 				ACDE4B3C20EA658600F3D35B /* ModelFactory.swift in Sources */,
