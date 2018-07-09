@@ -10,6 +10,7 @@ target 'Wheater' do
   pod 'Alamofire', '~> 4.7'
   pod 'SwiftyJSON'
   pod 'Kingfisher'
+  pod 'RealmSwift'
 
   target 'WheaterTests' do
     inherit! :search_paths

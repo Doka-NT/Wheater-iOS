@@ -7,11 +7,13 @@
 //
 
 import Foundation
+import RealmSwift
 
-class Photo {
-    var uri:String
+class Photo:Object {
+    @objc dynamic var uri:String = ""
     
-    init(uri:String) {
+    convenience init(uri:String) {
+        self.init()
         self.uri = uri
     }
 }

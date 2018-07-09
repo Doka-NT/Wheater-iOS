@@ -7,13 +7,15 @@
 //
 
 import Foundation
+import RealmSwift
 
-class Group {
-    var id:Int
-    var name:String
-    var imageUri:String
+class Group:Object {
+    @objc dynamic var id:Int = 0
+    @objc dynamic var name:String = ""
+    @objc dynamic var imageUri:String = ""
     
-    init(id:Int, name:String, imageUri:String) {
+    convenience init(id:Int, name:String, imageUri:String) {
+        self.init()
         self.id = id
         self.name = name
         self.imageUri = imageUri
