@@ -49,7 +49,6 @@ extension VkAuthViewController: WKNavigationDelegate {
         }
         
         if let token = params["access_token"] {
-            print(token)
             VKClient.token = token
             
             performSegue(withIdentifier: "AfterLoginSegue", sender: self)

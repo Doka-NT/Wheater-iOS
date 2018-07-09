@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import RealmSwift
 
 class FriendsTableViewController: UITableViewController {
     let friendCellId = "friendCell"
@@ -16,12 +17,8 @@ class FriendsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // запрос к API друзей
-        try! VKClient.getInstance().getFriends { friends in
-            self.friends = friends
-            self.tableView.reloadData()
-        }
+    
+        loadData()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -42,5 +39,24 @@ class FriendsTableViewController: UITableViewController {
         }
         
         photoController.friend = friends[(self.tableView.indexPathForSelectedRow?.row)!]
+    }
+    
+    private func loadData() {
+        // запрос к API друзей
+        try! VKClient.getInstance().getFriends { friends in
+            let realm = try! Realm()
+            try! realm.write {
+                realm.delete(realm.objects(Friend.self))
+                realm.add(friends)
+                
+                self.loadDataFromRealm()
+            }
+        }
+    }
+    
+    private func loadDataFromRealm() {
+        let realm = try! Realm()
+        self.friends = realm.objects(Friend.self).map { $0 }
+        self.tableView.reloadData()
     }
 }

@@ -13,12 +13,16 @@ import RealmSwift
 class Friend:Object {
     @objc dynamic var id: Int = 0
     @objc dynamic var name: String = ""
-    @objc dynamic var image: URL? = URL(string: "")
+    @objc dynamic var imageName: String = ""
+    
+    var image: URL? {
+        return URL(string: imageName)
+    }
     
     convenience init(id:Int, name:String, imageName: String) {
         self.init()
         self.id = id
         self.name = name
-        self.image = URL(string: imageName)
+        self.imageName = imageName
     }
 }

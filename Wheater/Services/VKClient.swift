@@ -53,7 +53,10 @@ class VKClient {
                 "album_id": "profile"
         ]) { response in
             let json = JSON(response.value as Any)
-            let photos = ModelFactory.createPhotosList(json)
+            let photos = ModelFactory.createPhotosList(json).map { photo -> (Photo) in
+                photo.friend = friend
+                return photo
+            }
             
             handler(photos)
         }
@@ -89,7 +92,6 @@ class VKClient {
         }
         
         let url = baseUrl + method
-        print(url, params)
         Alamofire.request(url, method: .get, parameters: params).responseJSON(completionHandler: handler)
     }
     

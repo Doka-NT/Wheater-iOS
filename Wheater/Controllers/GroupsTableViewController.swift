@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class GroupsTableViewController: UITableViewController {
     private var cellId = "groupCell"
@@ -14,13 +15,7 @@ class GroupsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // запрос к API групп
-        try! VKClient.getInstance().getGroups() { groups in
-            self.groups = groups
-            self.tableView.reloadData()
-        }
-
+        loadData()
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -52,5 +47,24 @@ class GroupsTableViewController: UITableViewController {
             groups.append(allGroupsTV.groups[selectedIndex])
             tableView.reloadData()
         }
+    }
+    
+    private func loadData() {
+        // запрос к API групп
+        try! VKClient.getInstance().getGroups() { groups in
+            let realm = try! Realm()
+            try! realm.write {
+                realm.delete(realm.objects(Group.self))
+                realm.add(groups)
+                
+                self.loadDataFromRealm()
+            }
+        }
+    }
+    
+    private func loadDataFromRealm() {
+        let realm = try! Realm()
+        self.groups = realm.objects(Group.self).map { $0 }
+        self.tableView.reloadData()
     }
 }

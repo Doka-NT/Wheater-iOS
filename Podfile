@@ -11,6 +11,7 @@ target 'Wheater' do
   pod 'SwiftyJSON'
   pod 'Kingfisher'
   pod 'RealmSwift'
+  pod 'SwiftKeychainWrapper'
 
   target 'WheaterTests' do
     inherit! :search_paths

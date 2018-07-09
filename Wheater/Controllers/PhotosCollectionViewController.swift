@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import Kingfisher
+import RealmSwift
 
 class PhotosCollectionViewController: UICollectionViewController {
     let cellId = "photoCell"
@@ -18,15 +19,7 @@ class PhotosCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard friend != nil else {
-            return
-        }
-        
-        // запрос к API фото
-        try! VKClient.getInstance().getPhotos(for: friend!) { photos in
-            self.photos = photos
-            self.collectionView?.reloadData()
-        }
+        loadData()
     }
 
 
@@ -44,4 +37,26 @@ class PhotosCollectionViewController: UICollectionViewController {
         return cell
     }
 
+    private func loadData() {
+        guard friend != nil else {
+            return
+        }
+        
+        // запрос к API фото
+        try! VKClient.getInstance().getPhotos(for: friend!) { photos in
+            let realm = try! Realm()
+            try! realm.write {
+                realm.delete(realm.objects(Photo.self).filter("friend.id = %@", self.friend!.id))
+                realm.add(photos)
+                
+                self.loadDataFromRealm()
+            }
+        }
+    }
+    
+    private func loadDataFromRealm() {
+        let realm = try! Realm()
+        self.photos = realm.objects(Photo.self).filter("friend.id = %@", self.friend!.id).map { $0 }
+        self.collectionView?.reloadData()
+    }
 }

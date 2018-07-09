@@ -11,6 +11,7 @@ import RealmSwift
 
 class Photo:Object {
     @objc dynamic var uri:String = ""
+    @objc dynamic var friend:Friend?
     
     convenience init(uri:String) {
         self.init()
